@@ -1,7 +1,7 @@
 /**
  * Jeu du nombre mystère
  * @author  Michaël Demars
- * @version 0.1
+ * @version 0.2
  * @since   2022-08-30 (date de création)
  */
 
@@ -25,13 +25,19 @@
     console.log(nbrTire);
 
     let message = `Le nombre à deviner est compris entre ${MIN} et ${MAX}.`;
-    let nbrEssais;
+    let nbrEssais = 0;
     let reponse;
 
-    for (nbrEssais = 0; nbrTire !== reponse; nbrEssais++) {
+    do{
         reponse = Number(prompt(message));
-        message = reponse > nbrTire ? 'C\'est moins' : 'C\'est plus';
-    }
+
+        if (isNaN(reponse))
+            message = 'Réponse invalide!';
+        else {
+            nbrEssais++;
+            message = reponse > nbrTire ? 'C\'est moins' : 'C\'est plus';
+        }
+    }while(nbrTire !== reponse);
 
     alert(`Bravo, tu as gagné en ${nbrEssais} coups !`);
 }()); // main IIFE
