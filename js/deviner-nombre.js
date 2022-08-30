@@ -24,14 +24,14 @@
     let nbrTire = tireNombre(MIN, MAX);
     console.log(nbrTire);
 
-    let reponse = null;
     let message = `Le nombre à deviner est compris entre ${MIN} et ${MAX}.`;
+    let nbrEssais;
+    let reponse;
 
-    for (var nbrEssais = 0; nbrTire !== reponse; nbrEssais++) {
+    for (nbrEssais = 0; nbrTire !== reponse; nbrEssais++) {
         reponse = Number(prompt(message));
         message = reponse > nbrTire ? 'C\'est moins' : 'C\'est plus';
     }
 
     alert(`Bravo, tu as gagné en ${nbrEssais} coups !`);
-    delete(nbrEssais);
 }()); // main IIFE
